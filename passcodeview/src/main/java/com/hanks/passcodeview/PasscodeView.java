@@ -50,11 +50,14 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
     private String correctInputTip = "Passcode is correct";
 
     private int passcodeLength = 4;
+    private int durationAnimation = 600;
     private int correctStatusColor = 0xFF61C560; //0xFFFF0000
     private int wrongStatusColor = 0xFFF24055;
     private int normalStatusColor = 0xFFFFFFFF;
     private int numberTextColor = 0xFF747474;
     private int passcodeType = TYPE_SET_PASSCODE;
+
+    private boolean isAutoNext = false;
 
     public PasscodeView(@NonNull Context context) {
         this(context, null);
@@ -206,6 +209,16 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
 
     public PasscodeView setListener(PasscodeViewListener listener) {
         this.listener = listener;
+        return this;
+    }
+
+    public PasscodeView setDurationAnimation(int durationAnimation) {
+        this.durationAnimation = durationAnimation;
+        return this;
+    }
+
+    public PasscodeView setIsAutoNext(boolean isAutoNext) {
+        this.isAutoNext = isAutoNext;
         return this;
     }
 
@@ -385,6 +398,9 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
         psdView.setColor(normalStatusColor);
         psdView.setTag(number);
         layout_psd.addView(psdView);
+        if (isAutoNext) {
+            next();
+        }
     }
 
     private int dpToPx(float valueInDp) {
@@ -425,7 +441,7 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
         cursor.setVisibility(VISIBLE);
         cursor.animate()
                 .translationX(layout_psd.getWidth())
-                .setDuration(600)
+                .setDuration(durationAnimation)
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
@@ -467,7 +483,7 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
         cursor.setTranslationX(0);
         cursor.setVisibility(VISIBLE);
         cursor.animate()
-                .setDuration(600)
+                .setDuration(durationAnimation)
                 .translationX(layout_psd.getWidth())
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
