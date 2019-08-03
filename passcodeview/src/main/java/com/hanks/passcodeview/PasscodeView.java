@@ -404,7 +404,7 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
         psdView.setColor(normalStatusColor);
         psdView.setTag(number);
         layout_psd.addView(psdView);
-        if (isAutoNext) {
+        if (layout_psd.getChildCount() >= passcodeLength && isAutoNext) {
             next();
         }
     }
