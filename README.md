@@ -1,4 +1,5 @@
-# PasscodeView
+# PasscodeView 
+[![](https://jitpack.io/v/sangzn34/PasscodeView.svg)](https://jitpack.io/#sangzn34/PasscodeView)
 
 An Passcode view view for Android.
  
@@ -12,8 +13,17 @@ An Passcode view view for Android.
 ## Usage
 
 ```gradle
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+```gradle
 dependencies {
-    compile 'com.hanks:passcodeview:0.1.2'
+    implementation 'com.github.sangzn34:PasscodeView:1.0.1'
 }
 ```
 
@@ -30,6 +40,30 @@ dependencies {
     app:numberTextColor="#222222"
     app:passcodeLength="5"
     app:passcodeViewType="set_passcode"/>
+```
+### What new in  this version
+```java
+.setIsAutoClear(true)
+.setIsAutoNext(true)
+```
+
+```java
+passcodeView
+        .setPasscodeLength(4)
+        .setLocalPasscode("5555")
+        .setIsAutoClear(true)
+        .setIsAutoNext(true)
+        .setListener(new PasscodeView.PasscodeViewListener() {
+            @Override
+            public void onFail(String wrongNumber) {
+                Toast.makeText(getApplication(),"Wrong!!",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSuccess(String number) {
+                Toast.makeText(getApplication(), "finish", Toast.LENGTH_SHORT).show();
+            }
+});
 ```
 
 
