@@ -58,6 +58,7 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
     private int passcodeType = TYPE_SET_PASSCODE;
 
     private boolean isAutoNext = false;
+    private boolean isAutoClear = false;
 
     public PasscodeView(@NonNull Context context) {
         this(context, null);
@@ -219,6 +220,11 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
 
     public PasscodeView setIsAutoNext(boolean isAutoNext) {
         this.isAutoNext = isAutoNext;
+        return this;
+    }
+
+    public PasscodeView setIsAutoClear(boolean isAutoClear) {
+        this.isAutoClear = isAutoClear;
         return this;
     }
 
@@ -457,6 +463,9 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
                                 setPSDViewBackgroundResource(normalStatusColor);
                                 if (secondInput && listener != null) {
                                     listener.onFail(getPasscodeFromView());
+                                }
+                                if (isAutoClear) {
+                                    clearChar();
                                 }
                             }
                         });
