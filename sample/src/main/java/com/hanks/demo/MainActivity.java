@@ -22,4 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public void passcode3(View view){
         startActivity(new Intent(this,PasscodeActivity3.class));
     }
+    public void passcode4(View view){
+        startActivity(new Intent(this,PasscodeActivity4.class));
+    }
 }

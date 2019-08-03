@@ -26,4 +26,10 @@
         android:onClick="passcode3"
         android:text="passcode3"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="passcode4"
+        android:text="passcode4"/>
+
 </LinearLayout>

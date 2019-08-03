@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PasscodeViewProject</string>
     <string name="title_activity_passcode3">PasscodeActivity3</string>
+    <string name="title_activity_passcode4">PasscodeActivity4</string>
 </resources>
