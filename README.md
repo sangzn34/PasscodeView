@@ -23,7 +23,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.sangzn34:PasscodeView:1.0.1'
+    implementation 'com.github.sangzn34:PasscodeView:1.0.3'
 }
 ```
 
