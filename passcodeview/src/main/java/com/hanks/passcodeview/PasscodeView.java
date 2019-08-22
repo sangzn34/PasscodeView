@@ -177,6 +177,8 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
 
     }
 
+    public void updateFirstInputTip() { tv_input_tip.setText(firstInputTip); }
+
     @Override
     public void onClick(View view) {
         int number = (int) view.getTag();
