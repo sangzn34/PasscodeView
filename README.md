@@ -65,7 +65,7 @@ passcodeView
             }
 });
 ```
-### 0.1.4
+### 1.0.4
 
 You can custom action numberOK and change drawable.
 ```java
