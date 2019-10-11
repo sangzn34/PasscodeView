@@ -245,6 +245,11 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
         return this;
     }
 
+    public PasscodeView setDrawableNumberOK(Drawable drawable) {
+        this.numberOK.setImageDrawable(drawable);
+        return this;
+    }
+
     public PasscodeView setOnClickAction(OnClickListener onClickAction) {
         if (onClickAction == null) {
             numberOK.setOnClickListener(new OnClickListener() {
