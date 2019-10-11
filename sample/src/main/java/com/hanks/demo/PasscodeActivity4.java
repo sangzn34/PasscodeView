@@ -40,13 +40,12 @@ public class PasscodeActivity4 extends AppCompatActivity {
                     public void onFail(String wrongNumber) {
                         Toast.makeText(getApplication(),"Wrong!!",Toast.LENGTH_SHORT).show();
                     }
-
-            @Override
-            public void onSuccess(String number) {
-                Toast.makeText(getApplication(), "finish", Toast.LENGTH_SHORT).show();
-                onBackPressed();
-            }
-        });
+                    @Override
+                    public void onSuccess(String number) {
+                        Toast.makeText(getApplication(), "finish", Toast.LENGTH_SHORT).show();
+                        onBackPressed();
+                    }
+            });
     }
 
 }
