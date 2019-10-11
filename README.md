@@ -68,6 +68,9 @@ passcodeView
 ### 1.0.4
 
 You can custom action numberOK and change drawable.
+
+<img src="https://raw.githubusercontent.com/sangzn34/PasscodeView/master/screenshot/demo3.png" width="220px" style="margin: 20px;">
+
 ```java
 passcodeView
         .setPasscodeLength(4)
