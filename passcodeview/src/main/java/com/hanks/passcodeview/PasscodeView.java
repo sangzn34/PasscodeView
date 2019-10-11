@@ -242,6 +242,12 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
 
     public PasscodeView setIsAddFingerScan(boolean isAddFingerScan) {
         this.isAddFingerScan = isAddFingerScan;
+        if (isAddFingerScan) {
+            numberOK.setImageResource(R.drawable.ic_fingerprint_black_24dp);
+        }
+        else {
+            numberOK.setImageResource(R.drawable.ic_check_bold_24dp);
+        }
         return this;
     }
 
