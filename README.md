@@ -65,8 +65,41 @@ passcodeView
             }
 });
 ```
+### 0.1.4
 
+You can custom action numberOK and change drawable.
+```java
+passcodeView
+        .setPasscodeLength(4)
+        .setLocalPasscode("5555")
+        .setIsAutoClear(true)
+        .setIsAutoNext(true)
+        .setOnClickAction(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(PasscodeActivity4.this, "Custom Click Action!!", Toast.LENGTH_LONG).show();
+            }
+        })
+        .setListener(new PasscodeView.PasscodeViewListener() {
+            @Override
+            public void onFail(String wrongNumber) {
+                Toast.makeText(getApplication(),"Wrong!!",Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onSuccess(String number) {
+                Toast.makeText(getApplication(), "finish", Toast.LENGTH_SHORT).show();
+                onBackPressed();
+            }
+    });
+```
 
+```xml
+app:extentActionDrawable="@drawable/ic_fingerprint_black_24dp"
+```
+or
+```xml
+app:isAddFingerScan="true"
+```
 
 ## License
 
