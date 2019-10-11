@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -59,6 +60,8 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
 
     private boolean isAutoNext = false;
     private boolean isAutoClear = false;
+    private boolean isAddFingerScan = false;
+    private Drawable extentActionDrawable = null;
 
     public PasscodeView(@NonNull Context context) {
         this(context, null);
@@ -82,6 +85,8 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
             wrongLengthTip = typedArray.getString(R.styleable.PasscodeView_wrongLengthTip);
             wrongInputTip = typedArray.getString(R.styleable.PasscodeView_wrongInputTip);
             correctInputTip = typedArray.getString(R.styleable.PasscodeView_correctInputTip);
+            isAddFingerScan = typedArray.getBoolean(R.styleable.PasscodeView_isAddFingerScan, false);
+            extentActionDrawable = typedArray.getDrawable(R.styleable.PasscodeView_extentActionDrawable);
         } finally {
             typedArray.recycle();
         }
@@ -142,6 +147,12 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
                 return true;
             }
         });
+        if (isAddFingerScan) {
+            numberOK.setImageResource(R.drawable.ic_fingerprint_black_24dp);
+        }
+        else if (extentActionDrawable != null) {
+            numberOK.setImageDrawable(extentActionDrawable);
+        }
         numberOK.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,9 +221,8 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
         return listener;
     }
 
-    public PasscodeView setListener(PasscodeViewListener listener) {
+    public void setListener(PasscodeViewListener listener) {
         this.listener = listener;
-        return this;
     }
 
     public PasscodeView setDurationAnimation(int durationAnimation) {
@@ -227,6 +237,26 @@ public class PasscodeView extends FrameLayout implements View.OnClickListener {
 
     public PasscodeView setIsAutoClear(boolean isAutoClear) {
         this.isAutoClear = isAutoClear;
+        return this;
+    }
+
+    public PasscodeView setIsAddFingerScan(boolean isAddFingerScan) {
+        this.isAddFingerScan = isAddFingerScan;
+        return this;
+    }
+
+    public PasscodeView setOnClickAction(OnClickListener onClickAction) {
+        if (onClickAction == null) {
+            numberOK.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    next();
+                }
+            });
+        }
+        else {
+            numberOK.setOnClickListener(onClickAction);
+        }
         return this;
     }
 

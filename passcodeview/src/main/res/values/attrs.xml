@@ -15,5 +15,7 @@
         <attr name="wrongLengthTip" format="string"/>
         <attr name="wrongInputTip" format="string"/>
         <attr name="correctInputTip" format="string"/>
+        <attr name="isAddFingerScan" format="boolean"/>
+        <attr name="extentActionDrawable" format="integer"/>
     </declare-styleable>
 </resources>

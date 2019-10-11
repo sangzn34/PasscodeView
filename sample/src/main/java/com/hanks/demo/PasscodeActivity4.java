@@ -29,6 +29,12 @@ public class PasscodeActivity4 extends AppCompatActivity {
                 .setLocalPasscode("5555")
                 .setIsAutoClear(true)
                 .setIsAutoNext(true)
+                .setOnClickAction(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(PasscodeActivity4.this, "Custom Click Action!!", Toast.LENGTH_LONG).show();
+                    }
+                })
                 .setListener(new PasscodeView.PasscodeViewListener() {
                     @Override
                     public void onFail(String wrongNumber) {
